@@ -1,6 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const userRouter = require('../routes/userData.router');
+const airplaneRouter = require('../routes/airplane.router');
+const accessRouter = require('../routes/accessToken.router');
 
 module.exports = function (app) {
   // Enable CORS with origin and credentials
@@ -16,4 +18,6 @@ module.exports = function (app) {
   });
 
   app.use('/api/user', userRouter);
+  app.use('/api/airplane', airplaneRouter);
+  app.use('/api/security', accessRouter);
 };

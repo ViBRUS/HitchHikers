@@ -12,3 +12,15 @@ exports.createRandomBytes = () =>
       resolve(token)
     });
   });
+
+
+exports.mapAirportFields = (airport) => {
+    return {
+      geoCode: airport.geoCode,
+      iataCode: airport.iataCode,
+      timeZoneOffset: airport.timeZoneOffset,
+      id: airport.id,
+      detailedName: airport.detailedName,
+      name: airport.name,
+    };
+  };
