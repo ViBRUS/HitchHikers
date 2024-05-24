@@ -28,13 +28,13 @@ class CommonGotApi {
             'EAI_AGAIN',
             'EPROTO',
           ],
-          calculateDelay: () => {
-            computedValue *= 2 ** retryCount;
-            retryCount += 1;
-            console.log('Retry API after', computedValue, 'seconds. Retry count:', retryCount);
-            if (retryCount > maxRetry) return 0;
-            return computedValue * 1000;
-          },
+        //   calculateDelay: () => {
+        //     computedValue *= 2 ** retryCount;
+        //     retryCount += 1;
+        //     console.log('Retry API after', computedValue, 'seconds. Retry count:', retryCount);
+        //     if (retryCount > maxRetry) return 0;
+        //     return computedValue * 1000;
+        //   },
         },
         responseType: 'json'
       });
