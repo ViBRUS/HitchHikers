@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect, useContext } from "react";
 import Canvas from "./Canvas";
 import services from "../common/services";
 import AuthContext from "../context/AuthProvider";
+import '../css/login-page.css';
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
