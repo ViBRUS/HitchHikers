@@ -20,7 +20,7 @@ class LocationsApi {
             return response?.data;
 
         } catch (error) {
-            throw new Error(`Error fetching linkedin contact profile data: ${error.message}`);
+            throw new Error(`Error: ${error.message}`);
         }
 
     }
