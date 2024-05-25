@@ -43,10 +43,10 @@ We implemented the following APIs for seamless integration:
 **URL:** `{backendURL}/api/user/create`
 
 **Body:**
-- `name`: "Deepesh Ranjan Khatri"
-- `email`: "deepeshranjankhatri@gmail.com"
-- `password`: "12345678@87654321"
-- `mobile`: "7004553349"
+- `name`: ""
+- `email`: ""
+- `password`: ""
+- `mobile`: ""
 
 **Headers:**
 - Content-Type: application/json
@@ -59,8 +59,8 @@ We implemented the following APIs for seamless integration:
 **URL:** `{backendURL}/api/user/signIn`
 
 **Body:**
-- `email`: "deepeshranjankhatri@gmail.com"
-- `password`: "1234567@7654321"
+- `email`: ""
+- `password`: ""
 
 **Headers:**
 - Content-Type: application/json
@@ -73,7 +73,7 @@ We implemented the following APIs for seamless integration:
 **URL:** `{backendURL}/api/user/forgotPassword`
 
 **Body:**
-- `email`: "deepeshranjankhatri@gmail.com"
+- `email`: ""
 
 **Headers:**
 - Content-Type: application/json
@@ -86,7 +86,7 @@ We implemented the following APIs for seamless integration:
 **URL:** `{backendURL}/api/user/resetPassword`
 
 **Body:**
-- `newPassword`: "1234567@7654321"
+- `newPassword`: ""
 
 **Headers:**
 - Content-Type: application/json
