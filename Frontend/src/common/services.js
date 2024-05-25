@@ -1,5 +1,3 @@
-// const BASE_HEADERS = {};
-
 import constants from './constants';
 
 const JSON_HEADERS = {
@@ -10,7 +8,7 @@ const JSON_HEADERS = {
 const createRequest = (method, url, addittionalHeaders, additionalOptions) => {
     const options = {
         method: method,
-        headers: { ...JSON_HEADERS, ...addittionalHeaders}
+        headers: { ...addittionalHeaders}
     };
     
     const request = new Request(url, {...options, ...additionalOptions});
@@ -19,7 +17,7 @@ const createRequest = (method, url, addittionalHeaders, additionalOptions) => {
 }
 
 const createPayloadRequest = (method, url, payload, addittionalHeaders) => {
-    return createRequest(method, url, addittionalHeaders, payload ? {body: typeof payload === 'string'} : undefined);
+    return createRequest(method, url, addittionalHeaders, payload ? {body: typeof payload === 'string' ? payload : JSON.stringify(payload)} : undefined);
 }
 
 const createGetRequest = (url, addittionalHeaders) => {
@@ -42,18 +40,37 @@ const responseToJSON = (response) => {
     }
 }
 
-async function loginUser(userMail, password) {
+function loginUser(payload) {
     const url = constants.URLS.BASE + constants.URLS.LOGIN;
-    const payload = {
-        email: {userMail},
-        password: {password}
-    }
-    const request = createPostRequest(url, payload);
-    const response = await fetch(request);
-    // return responseToJSON(response);
-    return response.json();
+    const headers = { ...JSON_HEADERS }
+    const request = createPostRequest(url, payload, headers);
+    return fetch(request).then(response => responseToJSON(response));
+}
+
+function registerUser(payload) {
+    const url = constants.URLS.BASE + constants.URLS.SIGN_UP;
+    const headers = { ...JSON_HEADERS }
+    const request = createPostRequest(url, payload, headers);
+    return fetch(request).then(response => responseToJSON(response));
+}
+
+function logoutUser(token) {
+    const url = constants.URLS.BASE + constants.URLS.SIGN_OUT;
+    const headers = { ...JSON_HEADERS, ...{ Authorization: token } };
+    const request = createPostRequest(url, undefined, headers);
+    return fetch(request).then(response => responseToJSON(response));
+}
+
+async function getAirports(searchQuery, token) {
+    const url = constants.URLS.PLANE_BASE + constants.URLS.FETCH_PLANES.replace('{query}', searchQuery);
+    const headers = { ...{ Authorization: token } };
+    const request = createGetRequest(url, undefined, headers);
+    return fetch(request).then(response => responseToJSON(response));
 }
 
 export default {
-    loginUser
+    loginUser,
+    registerUser,
+    logoutUser,
+    getAirports
 }
