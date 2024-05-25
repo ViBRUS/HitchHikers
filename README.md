@@ -1,4 +1,5 @@
 # Aerothan 6.0 Flight Navigation System
+> PUSHPAK.nav
 
 ## Overview
 
@@ -16,11 +17,22 @@ The Aerothan 6.0 project aims to enhance flight navigation mechanisms for optima
 ## Table of Contents
 
 1. [Project Overview](#project-overview)
-2. [APIs](#apis)
-3. 
+2. [Tech stack](#tech-stack)
+3. [APIs](#apis)
+4. [Screenshots](#screenshots)
+5. [License](#license)
+6. [Acknowledgements](#acknowledgements)
+7. [Team](#team)
+8. 
 ## Project Overview
 
 The project aims to develop a comprehensive software solution for enhancing flight navigation mechanisms. By leveraging existing algorithms and real-time data sources, the solution will identify optimal flight paths, assess risks, and suggest alternative routes. The solution will provide real-time updates and alerts to aid decision-making for pilots, airlines, and airport authorities.
+
+## Tech stack:
+* Backend - Node.js
+* ML Model - Python, Jupyter Notebook
+* Frontend - React.js, canvas, MUI, OpenStreetMap, gsap lodash, react-toastify
+* Database - MongoDB
 
 ## APIs
 
@@ -142,6 +154,9 @@ We implemented the following APIs for seamless integration:
 
 **Description:** This endpoint is used for user sign-out. It requires a valid bearer token for authorization.
 
+## Screenshots
+
+
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
@@ -150,6 +165,9 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 We would like to thank the entire Team Hitchhikers for their hard work and dedication in making this project a success.
 
-## Contact
-
-For any queries or support, please contact Deepesh Ranjan Khatri at deepeshranjankhatri@gmail.com.
+## Team
+#### Team HitchHikers
+- Deepesh Ranjan Khatri (deepeshranjankhatri@gmail.com)
+- Vishal R. Sonar (vibrus77@gmail.com)
+- Suraj Lal ()
+- Sri Sowmya Kala ()
