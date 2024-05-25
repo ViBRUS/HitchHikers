@@ -16,22 +16,11 @@ The Aerothan 6.0 project aims to enhance flight navigation mechanisms for optima
 ## Table of Contents
 
 1. [Project Overview](#project-overview)
-2. [Obstacles](#obstacles)
-3. [Technical Obstacles](#technical-obstacles)
-4. [APIs](#apis)
-5. [Software](#software)
-
+2. [APIs](#apis)
+3. 
 ## Project Overview
 
 The project aims to develop a comprehensive software solution for enhancing flight navigation mechanisms. By leveraging existing algorithms and real-time data sources, the solution will identify optimal flight paths, assess risks, and suggest alternative routes. The solution will provide real-time updates and alerts to aid decision-making for pilots, airlines, and airport authorities.
-
-## Obstacles
-
-Possible risks include data inaccuracies, technical failures, and integration challenges. We will manage these risks through thorough testing, continuous monitoring, and agile development methodologies.
-
-## Technical Obstacles
-
-Integration between different systems may pose technical challenges. Mitigation strategies include using standardized APIs, modular architecture, and rigorous testing protocols.
 
 ## APIs
 
@@ -152,15 +141,6 @@ We implemented the following APIs for seamless integration:
 - Authorization: Bearer `<token>`
 
 **Description:** This endpoint is used for user sign-out. It requires a valid bearer token for authorization.
-
-## Software
-
-We have utilized a diverse set of software technologies for development, including but not limited to:
-
-- **Programming Languages:** Python, JavaScript
-- **Frameworks:** React
-- **Databases:** MongoDB
-- **Version Control:** Git
 
 ## License
 
