@@ -23,7 +23,7 @@ The Aerothan 6.0 project aims to enhance flight navigation mechanisms for optima
 5. [License](#license)
 6. [Acknowledgements](#acknowledgements)
 7. [Team](#team)
-8. 
+
 ## Project Overview
 
 The project aims to develop a comprehensive software solution for enhancing flight navigation mechanisms. By leveraging existing algorithms and real-time data sources, the solution will identify optimal flight paths, assess risks, and suggest alternative routes. The solution will provide real-time updates and alerts to aid decision-making for pilots, airlines, and airport authorities.
