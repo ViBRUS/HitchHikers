@@ -20,10 +20,13 @@ class UserDataController {
         }
         const user = new User({ name, email, password, mobile });
         await user.save();
+
+        const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: "1d" });
+
         console.log("User created successfully:", user.email);
         res.json({
             success: true,
-            user: { name: user.name, email: user.email, mobile: user.mobile, id: user._id },
+            user: { name: user.name, email: user.email, mobile: user.mobile, id: user._id, token: token },
         });
     }
 
