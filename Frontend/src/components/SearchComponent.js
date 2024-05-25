@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect, useContext } from 'react';
+import services from '../common/services';
+import AuthContext from '../context/AuthProvider';
 
 const SearchComponent = ({type, placeholder}) => {
   const [inputValue, setInputValue] = useState('');
   const [options, setOptions] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
+  const { auth } = useContext(AuthContext); 
 
   // Debounce mechanism
   useEffect(() => {
@@ -15,7 +17,7 @@ const SearchComponent = ({type, placeholder}) => {
       } else {
         setOptions([]);
       }
-    }, 500); // 500ms delay
+    }, 500);
 
     return () => clearTimeout(delayDebounceFn);
   }, [inputValue]);
@@ -23,11 +25,12 @@ const SearchComponent = ({type, placeholder}) => {
   const fetchOptions = async (query) => {
     setIsLoading(true);
     try {
-      // Replace with your API call
-    //   const response = await axios.get(https://api.example.com/options?query=${query});
-      const response = await axios.get(`http://localhost:3000/api/airplane/list/Airports?keyword=${query}`);
-      console.log(response);
-      setOptions(response?.data?.airports);
+      const token = `Bearer ${auth.token}`;
+      services.getAirports(query, auth.token).then(response => {
+        if (response?.success) {
+          setOptions(response.data?.airports);
+        }
+      });
     } catch (error) {
       console.error('Error fetching options:', error);
     } finally {
