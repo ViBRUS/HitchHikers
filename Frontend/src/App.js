@@ -6,7 +6,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './components/Login';
 import Home from './components/Home';
-import Dashboard from './components/Dashboard';
 import RequireAuth from './components/RequireAuth';
 import Unauthorized from './components/Unauthorized';
 import Layout from './components/Layout';

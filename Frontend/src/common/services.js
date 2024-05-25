@@ -56,21 +56,30 @@ function registerUser(payload) {
 
 function logoutUser(token) {
     const url = constants.URLS.BASE + constants.URLS.SIGN_OUT;
-    const headers = { ...JSON_HEADERS, ...{ Authorization: token } };
+    const headers = { ...JSON_HEADERS, ...{ 'Authorization': token } };
     const request = createPostRequest(url, undefined, headers);
     return fetch(request).then(response => responseToJSON(response));
 }
 
-async function getAirports(searchQuery, token) {
+function getAirports(searchQuery, token) {
     const url = constants.URLS.PLANE_BASE + constants.URLS.FETCH_PLANES.replace('{query}', searchQuery);
-    const headers = { ...{ Authorization: token } };
-    const request = createGetRequest(url, undefined, headers);
+    const headers = { ...JSON_HEADERS, ...{ 'Authorization': token } };
+    const request = createGetRequest(url, headers);
     return fetch(request).then(response => responseToJSON(response));
+}
+
+async function getFlightRoute(token) {
+    const url = constants.URLS.PLANE_BASE + constants.URLS.GET_ROUTE;
+    const headers = { ...JSON_HEADERS, ...{ 'Authorization': token } };
+    const request = createPostRequest(url, undefined, headers);
+    const response = await fetch(request);
+    return responseToJSON(response);
 }
 
 export default {
     loginUser,
     registerUser,
     logoutUser,
-    getAirports
+    getAirports,
+    getFlightRoute
 }

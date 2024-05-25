@@ -1,4 +1,3 @@
-// src/components/FlightModal.js
 import React, { useState } from 'react';
 import {
   Button,
@@ -9,9 +8,7 @@ import {
   Grid,
   MenuItem
 } from '@mui/material';
-// import { makeStyles } from '@mui/styles';
 
-// const useStyles = makeStyles((theme) => ({
   const modalSx = {
     display: 'flex',
     alignItems: 'center',

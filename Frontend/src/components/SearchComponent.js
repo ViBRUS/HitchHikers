@@ -26,9 +26,9 @@ const SearchComponent = ({typeProp, placeholderProp, onOptionSelect}) => {
     setIsLoading(true);
     try {
       const token = `Bearer ${auth.token}`;
-      services.getAirports(query, auth.token).then(response => {
+      services.getAirports(query, token).then(response => {
         if (response?.success) {
-          setOptions(response.data?.airports);
+          setOptions(response?.airports);
         }
       });
     } catch (error) {
@@ -49,6 +49,7 @@ const SearchComponent = ({typeProp, placeholderProp, onOptionSelect}) => {
     if(onOptionSelect){
         onOptionSelect(option)
     }
+
   };
 
   return (
