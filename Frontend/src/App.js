@@ -32,8 +32,7 @@ function App() {
             <Route element={<RequireAuth />}>
               <Route path="/flight" element={<FlightModal />} />
             </Route>
-				    {/* <Route path='/dashboard' element={<Dashboard />} /> */}
-			    </Route>
+		  </Route>
         </Route>
         <Route path="*" element={<Missing />} />
       </Routes>
