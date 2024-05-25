@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {useState } from "react";
 import { MapContainer, TileLayer } from "react-leaflet";
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faLocationDot, faRoute } from '@fortawesome/free-solid-svg-icons';
@@ -8,11 +8,13 @@ import RoutingMachine from './RoutingMachine';
 // import CustomMarker from "./Marker";
 import SearchComponent from "../SearchComponent";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLocationDot, faRoute } from '@fortawesome/free-solid-svg-icons';
+import {faRoute } from '@fortawesome/free-solid-svg-icons';
 
 const Map = () => {
     const [locationMarkers, setLocationMarkers] = useState([]);
     const [showFormView, setShowFormView] = useState(false);
+    const [selectedFromOption, setSelectedFromOption] = useState('')
+    const [selectedToOption, setSelectedToOption] = useState('')
 
     // useEffect(() => { }, [waypoints]);
 
@@ -27,8 +29,18 @@ const Map = () => {
         // },
     ]
 
-    async function handleRouteSubmit() {
-        console.log("comiing!!!");
+    const handleFromOptionSelect = (opt) => {
+        console.log(opt);
+        setSelectedFromOption(opt);
+    }
+    const handleToOptionSelect = (opt) => {
+        console.log(opt);
+        setSelectedToOption(opt);
+    }
+
+    async function handleRouteSubmit(event) {
+        event.preventDefault()
+        console.log(event);
     }
 
     return (
@@ -37,12 +49,24 @@ const Map = () => {
                 <div className="addRoutes">
                     {showFormView && (
                         <form onSubmit={handleRouteSubmit}>
-                            {/* <div className="posOne">
+                            <SearchComponent typeProp="text" placeholderProp="From..." onOptionSelect={handleFromOptionSelect} />
+                            <SearchComponent typeProp="text" placeholderProp="To..." onOptionSelect={handleToOptionSelect} />
+
+                            <div className="posOne">
                                 <input
                                     type="text"
                                     name="location"
                                     required
-                                    placeholder="Start Point"
+                                    placeholder="Airplane Type"
+                                />
+                            </div>
+
+                            <div className="posTwo">
+                                <input
+                                    type="text"
+                                    name="location"
+                                    required
+                                    placeholder="Departure Time"
                                 />
                             </div>
                             <div className="posTwo">
@@ -50,13 +74,10 @@ const Map = () => {
                                     type="text"
                                     name="location"
                                     required
-                                    placeholder="End Point"
+                                    placeholder="Weight"
                                 />
-                            </div> */}
-                            <SearchComponent type="text" placeholder="Start Point" />
-                            <SearchComponent type="text" placeholder="End Point" />
-                            <SearchComponent type="text" placeholder="Start Point" />
-                            <button className="addloc">Find shortest path</button>
+                            </div>
+                            <button className="addloc">Route</button>
                         </form>
                     )}
                     <FontAwesomeIcon
@@ -69,12 +90,6 @@ const Map = () => {
                 </div>
             </div>
             <MapContainer center={[31.505, 70.09]} zoom={8} scrollWheelZoom={true}>
-                {/* <Marker position={[31.505, 70.09]}>
-                    <Popup>
-                        this is popup
-                    </Popup>
-                </Marker> */}
-
                 <TileLayer
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

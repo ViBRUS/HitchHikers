@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const SearchComponent = ({type, placeholder}) => {
+const SearchComponent = ({typeProp, placeholderProp, onOptionSelect}) => {
   const [inputValue, setInputValue] = useState('');
   const [options, setOptions] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -41,17 +41,20 @@ const SearchComponent = ({type, placeholder}) => {
   };
 
   const handleOptionClick = (option) => {
-    setInputValue(option);
+    setInputValue(option?.detailedName);
     setShowDropdown(false);
+    if(onOptionSelect){
+        onOptionSelect(option)
+    }
   };
 
   return (
     <div className="debounce-dropdown">
       <input
-        type={TypeError}
+        type={typeProp}
         value={inputValue}
         onChange={handleInputChange}
-        placeholder={placeholder}
+        placeholder={placeholderProp}
       />
       {showDropdown && (
         <ul className="dropdown">
@@ -59,7 +62,7 @@ const SearchComponent = ({type, placeholder}) => {
             <li>Loading...</li>
           ) : (
             options.map((option, index) => (
-              <li key={index} onClick={() => handleOptionClick(option)}>
+              <li key={index} onClick={() => handleOptionClick(option)} style={{fontSize: "1rem"}}>
                 {option?.detailedName}
               </li>
             ))
