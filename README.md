@@ -157,16 +157,16 @@ We implemented the following APIs for seamless integration:
 ## Screenshots
 
 * Sign Up page-
-![Sign Up](https://github.com/ViBRUS/HitchHikers/Screenshots/Pushpak_SignUp.png)
+![Sign Up](https://github.com/ViBRUS/HitchHikers/blob/main/Screenshots/Pushpak_SignUp.png)
 
 * Log in-
-![Log in](https://github.com/ViBRUS/HitchHikers/Screenshots/Pushpak_Login.png)
+![Log in](https://github.com/ViBRUS/HitchHikers/blob/main/Screenshots/Pushpak_LogIn.png)
 * Dashboard-
-![Dashboard](https://github.com/ViBRUS/HitchHikers/Screenshots/Pushpak_Dashboard.png)
+![Dashboard](https://github.com/ViBRUS/HitchHikers/blob/main/Screenshots/Pushpak_Dashboard.png)
 * Profile-
-![Profile](https://github.com/ViBRUS/HitchHikers/Screenshots/Pushpak_Profile.png)
+![Profile](https://github.com/ViBRUS/HitchHikers/blob/main/Screenshots/Pushpak_Profile.png)
 * Map-
-![Map](https://github.com/ViBRUS/HitchHikers/Screenshots/Pushpak_Map.png)
+![Map](https://github.com/ViBRUS/HitchHikers/blob/main/Screenshots/Pushpak_Map.png)
 
 
 
