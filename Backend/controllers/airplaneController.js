@@ -1,5 +1,6 @@
 const { mapAirportFields } = require("../utilities/helper");
 const LocationsApi = require('../apis/locations.api');
+const MLModelServiceAPI = require('../apis/mlModelService.api')
 const AirplaneDetails = require('../models/airplaneDetails'); // Import the AirplaneDetails model
 const NodeCache = require('node-cache');
 const config = require('../config.json');
@@ -43,8 +44,7 @@ class AirplaneController {
         }
     }
 
-
-    async saveDetails(req, res) {
+    async saveDetailsAndReturnRoutes(req, res) {
         const { from, to, airplaneType, DepartureTime, weight, callSign } = req?.body;
 
         if (!from || !to || !airplaneType || !DepartureTime || !weight || !callSign) {
@@ -53,7 +53,6 @@ class AirplaneController {
                 message: "Missing either fields: [ from, to, airplaneType, DepartureTime, weight, callSign ]",
             });
         }
-
 
         try {
             const uniqueSearchId = uuidv5(callSign + DepartureTime.toString(), config.namespace);
@@ -70,17 +69,22 @@ class AirplaneController {
 
             await airplaneDetails.save();
 
+            const mlModelServiceAPI = new MLModelServiceAPI();
+            const routesData = await mlModelServiceAPI.fetchOptimisedRoutes(from, to)
+
             res.json({
                 success: true,
-                message: 'Airplane details saved successfully.'
+                message: 'Airplane details saved successfully.',
+                routes: routesData 
             });
         } catch (error) {
-            console.error('Error saving airplane details:', error);
+            console.error('Error saving airplane details or fetching routes:', error);
             res.status(500).json({
                 success: false,
-                message: 'Failed to save airplane details.'
+                message: 'Failed to save airplane details or fetch routes.'
             });
         }
+
     }
 }
 
