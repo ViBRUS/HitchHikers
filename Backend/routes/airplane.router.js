@@ -7,7 +7,7 @@ const { authenticateToken } = require('../middlewares/auth');
 
 
 router.get("/list/Airports", authenticateToken, airplaneController.getAirportsList);
-router.post("/save/Details", authenticateToken, airplaneController.saveDetails);
+router.post("/save/Details", authenticateToken, airplaneController.saveDetailsAndReturnRoutes);
 
 
 module.exports = router;
