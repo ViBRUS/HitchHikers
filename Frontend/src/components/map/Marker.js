@@ -2,7 +2,7 @@ import React from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import MakrerUrl from "../../assets/mapMarker.png";
-import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
+import { Marker } from "react-leaflet";
 
 const CustomMarker = ({ position, children }) => {
 //   const map = useMap();
